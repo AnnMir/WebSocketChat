@@ -1,13 +1,8 @@
 package Client;
 
-import org.java_websocket.client.WebSocketClient;
-import org.java_websocket.handshake.ServerHandshake;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.Timer;
 
 import static Common.Commons.*;
@@ -35,7 +30,7 @@ public class Client {
         new Client(args[0], Integer.parseInt(args[1]));
     }
 
-    Client(final String addr, final int port){
+    private Client(final String addr, final int port){
         address = addr;
         serverPort = port;
         view = new View(this);

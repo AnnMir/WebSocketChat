@@ -5,17 +5,14 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
-import java.net.UnknownHostException;
-import java.util.Collection;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class WSServer extends WebSocketServer {
 
     private ConcurrentHashMap<Integer, Message> messageList;
 
-    public WSServer(InetSocketAddress address, ConcurrentHashMap<Integer, Message> messageList) {
+    WSServer(InetSocketAddress address, ConcurrentHashMap<Integer, Message> messageList) {
         super(address);
         this.messageList = messageList;
         System.out.println("WSServer created");
