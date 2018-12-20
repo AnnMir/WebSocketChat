@@ -60,8 +60,6 @@ public class WSServer extends WebSocketServer {
                 //if(j==messageList.size()-1)
                 broadcast(msg, getConnections());
             }
-
-
         }
         System.out.println("onMessage");
     }

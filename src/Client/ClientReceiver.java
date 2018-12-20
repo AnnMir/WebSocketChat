@@ -101,6 +101,7 @@ public class ClientReceiver implements Runnable {
                 case KEY_POST_LOGOUT: {
                     view.successLogout();
                     mainClient.closeSocket();
+                    view.webSocketClient.close();
                     showResponseMessage("Logout");
                     break;
                 }
@@ -130,6 +131,8 @@ public class ClientReceiver implements Runnable {
         view.updateChat(responseStartLine);
         for (String key : responseHeaders.keySet()) {
             view.updateChat(key + ":" + responseHeaders.get(key));
+            if(responseHeaders.get(key).equals("WWW-Authenticate: "))
+            view.webSocketClient.close();
         }
         if (responseJsonObject != null) {
             view.updateChat(responseJsonObject.toString());

@@ -29,7 +29,7 @@ public class View {
     private Client mainClient;
     private GridBagConstraints c;
     private JFrame mainframe;
-    private WebSocketClient webSocketClient;
+    WebSocketClient webSocketClient;
 
     View(final Client client) {
         mainClient = client;
@@ -205,8 +205,12 @@ public class View {
 
                         @Override
                         public void onMessage(String s) {
+                            if(mainClient.isLogin()){
                             showMessagesFromWebSocket(s);
-                            System.out.println("WSClient get message" + s);
+                            System.out.println("WSClient get message" + s);}
+                            else{
+                                System.out.println("Authorization error\n");
+                            }
                         }
 
                         @Override
